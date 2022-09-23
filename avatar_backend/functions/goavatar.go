@@ -45,13 +45,13 @@ func avatar(e event.Event) uint32 {
 
 	img, err := govatar.GenerateForUsername(_gender, username)
 	if err != nil {
-		h.Write([]byte(err.Error()))
+		h.Write([]byte("generate failed with " + err.Error()))
 		return 1
 	}
 
 	err = png.Encode(&b, img)
 	if err != nil {
-		h.Write([]byte(err.Error()))
+		h.Write([]byte("eng encoding failed with " + err.Error()))
 		return 1
 	}
 
