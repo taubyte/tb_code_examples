@@ -14,6 +14,8 @@ import (
 	"runtime/debug"
 )
 
+//go:generate go get -u github.com/o1egl/govatar/...
+
 //export avatar
 func avatar(e event.Event) uint32 {
 	h, err := e.HTTP()
@@ -47,14 +49,14 @@ func avatar(e event.Event) uint32 {
 
 	img, err := govatar.GenerateForUsername(_gender, username)
 	if err != nil {
-		h.Write([]byte("generate failed with " + err.Error()))
+		h.Write([]byte("Generate failed with " + err.Error()))
 		h.Write(debug.Stack())
 		return 1
 	}
 
 	err = png.Encode(&b, img)
 	if err != nil {
-		h.Write([]byte("png encoding failed with " + err.Error()))
+		h.Write([]byte("PNG encoding failed with " + err.Error()))
 		h.Write(debug.Stack())
 		return 1
 	}
