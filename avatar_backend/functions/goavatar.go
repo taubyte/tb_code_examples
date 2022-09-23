@@ -51,7 +51,7 @@ func avatarGo(e event.Event) uint32 {
 
 	err = png.Encode(&b, img)
 	if err != nil {
-		h.Write([]byte("PNG encoding failed with " + err.Error()))
+		h.Write([]byte("PNG Encoding failed with " + err.Error()))
 		return 1
 	}
 
