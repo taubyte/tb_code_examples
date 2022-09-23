@@ -2,6 +2,14 @@ package lib
 
 import (
 	"bitbucket.org/taubyte/go-sdk/event"
+
+	"bytes"
+	"strings"
+	"time"
+
+	"tinygo.org/x/drivers/image/png"
+
+	"github.com/o1egl/govatar"
 )
 
 //export avatar
