@@ -7,7 +7,7 @@ import (
 
 	"bitbucket.org/taubyte/go-sdk/event"
 
-	"image/png"
+	"tinygo.org/x/drivers/image/png"
 
 	"github.com/o1egl/govatar"
 )
