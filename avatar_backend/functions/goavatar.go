@@ -1,23 +1,19 @@
 package lib
 
 import (
-	"bitbucket.org/taubyte/go-sdk/event"
-
 	"bytes"
 	"strings"
 	"time"
 
-	"github.com/o1egl/govatar"
+	"bitbucket.org/taubyte/go-sdk/event"
 
 	"image/png"
 
-	"runtime/debug"
+	"github.com/o1egl/govatar"
 )
 
-//go:generate go get -u github.com/o1egl/govatar/...
-
 //export avatar
-func avatar(e event.Event) uint32 {
+func avatarGo(e event.Event) uint32 {
 	h, err := e.HTTP()
 	if err != nil {
 		return 1
@@ -50,14 +46,12 @@ func avatar(e event.Event) uint32 {
 	img, err := govatar.GenerateForUsername(_gender, username)
 	if err != nil {
 		h.Write([]byte("Generate failed with " + err.Error()))
-		h.Write(debug.Stack())
 		return 1
 	}
 
 	err = png.Encode(&b, img)
 	if err != nil {
 		h.Write([]byte("PNG encoding failed with " + err.Error()))
-		h.Write(debug.Stack())
 		return 1
 	}
 
