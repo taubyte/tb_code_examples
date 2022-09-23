@@ -7,11 +7,13 @@ import (
 	"strings"
 	"time"
 
-	//"tinygo.org/x/drivers/image/png"
+	"tinygo.org/x/drivers/image/png"
 
 	"github.com/o1egl/govatar"
 
-	"image/png"
+	_ "image/png"
+	_ "image/jpeg"
+	_ "image/gif"
 )
 
 //export avatar
