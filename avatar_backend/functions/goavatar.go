@@ -11,7 +11,7 @@ import (
 
 	"image/png"
 
-	"debug"
+	"runtime/debug"
 )
 
 //export avatar
