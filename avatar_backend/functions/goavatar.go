@@ -7,13 +7,11 @@ import (
 	"strings"
 	"time"
 
-	"tinygo.org/x/drivers/image/png"
-
 	"github.com/o1egl/govatar"
 
-	_ "image/png"
-	_ "image/jpeg"
-	_ "image/gif"
+	"image/png"
+
+	"debug"
 )
 
 //export avatar
@@ -50,12 +48,14 @@ func avatar(e event.Event) uint32 {
 	img, err := govatar.GenerateForUsername(_gender, username)
 	if err != nil {
 		h.Write([]byte("generate failed with " + err.Error()))
+		h.Write(debug.Stack())
 		return 1
 	}
 
 	err = png.Encode(&b, img)
 	if err != nil {
-		h.Write([]byte("eng encoding failed with " + err.Error()))
+		h.Write([]byte("png encoding failed with " + err.Error()))
+		h.Write(debug.Stack())
 		return 1
 	}
 
