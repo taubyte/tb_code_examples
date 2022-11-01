@@ -3,6 +3,7 @@ package lib
 import (
     "bitbucket.org/taubyte/go-sdk/event"
 	"time"
+	"fmt"
 )
 
 //export ping
